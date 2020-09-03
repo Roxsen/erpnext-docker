@@ -4,7 +4,7 @@ MAINTAINER Roxsen
 ENV FRAPPE_USER=frappe \
     MYSQL_PASSWORD=Pa55w0rD1! \
     ADMIN_PASSWORD=4DM1NPa55w0rD1! \
-    DEBIAN_FRONTEND noninteractive
+    DEBIAN_FRONTEND=noninteractive
     
 RUN echo 'APT::Install-Recommends 0;' >> /etc/apt/apt.conf.d/01norecommends \
  && echo 'APT::Install-Suggests 0;' >> /etc/apt/apt.conf.d/01norecommends \
