@@ -18,7 +18,7 @@ RUN echo 'APT::Install-Recommends 0;' >> /etc/apt/apt.conf.d/01norecommends \
 WORKDIR /home/$FRAPPE_USER
 RUN wget https://raw.githubusercontent.com/frappe/bench/master/playbooks/install.py && \
     sed -i -e 's,frappe/bench,lukptr/bench-docker,' install.py && apt update && \
-    python3 install.py --production --user $FRAPPE_USER --mysql-root-password $MYSQL_PASSWORD --admin-password $ADMIN_PASSWORD && \
+    python install.py --production --user $FRAPPE_USER --mysql-root-password $MYSQL_PASSWORD --admin-password $ADMIN_PASSWORD && \
     su - $FRAPPE_USER -c "cd /home/$FRAPPE_USER/.bench && git remote set-url origin https://github.com/frappe/bench && \
     git fetch && git reset --hard origin/master" && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/ /home/$FRAPPE_USER/.cache
 COPY production.conf /etc/supervisor/conf.d/
